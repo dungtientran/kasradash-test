@@ -1,5 +1,6 @@
+import { AppSidebar } from "@/components/app-sidebar";
 import { Header } from "@/components/layout/header";
-import { SideBar } from "@/components/layout/side-bar";
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import React from "react";
 
 const DashboardLayout = ({
@@ -9,11 +10,14 @@ const DashboardLayout = ({
 }>) => {
   return (
     <div className="flex ">
-      <SideBar />
-      <div className="bg-background relative flex w-full flex-1 flex-col ">
-        <Header />
-        {children}
-      </div>
+      {/* <SideBar /> */}
+      <SidebarProvider>
+        <AppSidebar />
+        <SidebarInset>
+          <Header />
+          {children}
+        </SidebarInset>
+      </SidebarProvider>
     </div>
   );
 };
