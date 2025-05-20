@@ -12,7 +12,6 @@ export const Header = () => {
 
       <div className="flex items-center gap-2 px-4">
         <ThemeToggle />
-        <div>User button</div>
       </div>
     </header>
   );
