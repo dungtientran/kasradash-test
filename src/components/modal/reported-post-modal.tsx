@@ -1,5 +1,5 @@
 import React from "react";
-import { useModal } from "./hooks/useModal";
+import { useModal } from "../../stores/useModal";
 import {
   Dialog,
   DialogContent,

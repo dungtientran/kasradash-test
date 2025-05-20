@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useCallback, useState } from "react";
+import React, { ChangeEvent, useCallback, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -16,6 +16,9 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Eye, EyeOff } from "lucide-react";
+import useFormStore from "@/stores/useFormStore";
+import { useBeforeUnload } from "@/hooks/use-before-unload";
+import { useWarnOnNavigate } from "@/hooks/use-warn-on-navigate";
 
 export const formSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
@@ -34,21 +37,37 @@ type FormData = z.infer<typeof formSchema>;
 
 export const SettingForm = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const { formData, setFormData, hasChanges, setHasChanges } = useFormStore(
+    (state) => state
+  );
 
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
-    defaultValues: {
-      name: "",
-      email: "",
-      password: "",
-    },
+    defaultValues: formData,
   });
 
   const onSubmit = (values: FormData) => {
     console.log("Form data:", values);
+    setFormData({
+      email: "",
+      name: "",
+      password: "",
+    });
+    form.reset();
+    setHasChanges(false);
   };
 
   const toggleShowPassword = useCallback(() => setShowPassword((v) => !v), []);
+
+  useBeforeUnload(hasChanges);
+  useWarnOnNavigate(hasChanges);
+
+  const createChangeHandler = (fieldName: keyof FormData) =>
+    function handleChange(e: ChangeEvent<HTMLInputElement>) {
+      const updated = { ...form.getValues(), [fieldName]: e.target.value };
+      form.setValue(fieldName, e.target.value);
+      setFormData(updated);
+    };
 
   return (
     <Form {...form}>
@@ -63,7 +82,11 @@ export const SettingForm = () => {
             <FormItem>
               <FormLabel>Username</FormLabel>
               <FormControl>
-                <Input placeholder="Username" {...field} />
+                <Input
+                  placeholder="Username"
+                  {...field}
+                  onChange={createChangeHandler("name")}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -77,7 +100,12 @@ export const SettingForm = () => {
             <FormItem>
               <FormLabel>Email</FormLabel>
               <FormControl>
-                <Input type="email" placeholder="example@mail.com" {...field} />
+                <Input
+                  type="email"
+                  placeholder="example@mail.com"
+                  {...field}
+                  onChange={createChangeHandler("email")}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -96,6 +124,7 @@ export const SettingForm = () => {
                     type={showPassword ? "text" : "password"}
                     placeholder="********"
                     {...field}
+                    onChange={createChangeHandler("password")}
                   />
                   <button
                     type="button"

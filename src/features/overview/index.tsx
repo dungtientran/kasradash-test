@@ -11,7 +11,7 @@ const overviewData: OverviewItem[] = [
 
 export const Overview: React.FC = () => {
   return (
-    <div className="flex flex-wrap gap-10">
+    <div className="flex flex-wrap gap-3 lg:gap-10">
       {overviewData.map((item) => (
         <OverviewCard key={item.id} {...item} />
       ))}

@@ -1,5 +1,3 @@
-"use client";
-
 import { ReportedPost } from "@/types/dashboard";
 import { create } from "zustand";
 

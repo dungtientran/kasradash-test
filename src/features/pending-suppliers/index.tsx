@@ -10,10 +10,10 @@ import { PendingItem } from "@/types/dashboard";
 const data: PendingItem[] = [
   { id: 1, name: "Supplier 1", description: "Waiting approval" },
   { id: 2, name: "Supplier 2", description: "Waiting approval" },
-  // { id: 3, name: "Supplier 3", description: "Waiting approval" },
-  // { id: 4, name: "Supplier 4", description: "Waiting approval" },
-  // { id: 5, name: "Supplier 5", description: "Waiting approval" },
-  // { id: 6, name: "Supplier 6", description: "Waiting approval" },
+  { id: 3, name: "Supplier 3", description: "Waiting approval" },
+  { id: 4, name: "Supplier 4", description: "Waiting approval" },
+  { id: 5, name: "Supplier 5", description: "Waiting approval" },
+  { id: 6, name: "Supplier 6", description: "Waiting approval" },
 ];
 
 export const PendingSuppliers = () => {

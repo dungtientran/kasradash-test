@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import {
   Sidebar,
@@ -44,13 +44,13 @@ export default function AppSidebar({
 }: React.ComponentProps<typeof Sidebar>) {
   const pathName = usePathname();
 
-  const [isClient, setIsClient] = useState(false);
+  // const [isClient, setIsClient] = useState(false);
 
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
+  // useEffect(() => {
+  //   setIsClient(true);
+  // }, []);
 
-  if (!isClient) return null;
+  // if (!isClient) return null;
 
   return (
     <Sidebar {...props}>

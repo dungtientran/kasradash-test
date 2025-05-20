@@ -5,7 +5,7 @@ import { PendingListSection } from "@/components/pending-section/pending-list-se
 import { ReportedPost as ReportedPostType } from "@/types/dashboard";
 import { PendingItemCard } from "@/components/pending-section/pendingItem-card";
 import { Button } from "@/components/ui/button";
-import { useModal } from "@/components/modal/hooks/useModal";
+import { useModal } from "@/stores/useModal";
 
 const data: ReportedPostType[] = [
   {
@@ -39,6 +39,11 @@ const data: ReportedPostType[] = [
   {
     id: 6,
     title: "Reported Post 6",
+    description: "Reported description",
+  },
+  {
+    id: 7,
+    title: "Reported Post 7",
     description: "Reported description",
   },
 ];

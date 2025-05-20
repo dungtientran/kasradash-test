@@ -15,10 +15,10 @@ const data: PendingItem[] = [
     description:
       "Waiting approval Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias est placeat, dolorem totam nulla ducimus eligendi vitae voluptatem, magni neque facere, ea ipsam corporis. Reprehenderit eaque repellendus quas debitis nesciunt!",
   },
-  // { id: 3, name: "Event 3", description: "Waiting approval" },
-  // { id: 4, name: "Event 4", description: "Waiting approval" },
-  // { id: 5, name: "Event 5", description: "Waiting approval" },
-  // { id: 6, name: "Event 6", description: "Waiting approval" },
+  { id: 3, name: "Event 3", description: "Waiting approval" },
+  { id: 4, name: "Event 4", description: "Waiting approval" },
+  { id: 5, name: "Event 5", description: "Waiting approval" },
+  { id: 6, name: "Event 6", description: "Waiting approval" },
 ];
 
 export const PendingEvents = () => {
