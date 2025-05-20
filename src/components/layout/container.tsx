@@ -14,10 +14,10 @@ export const Container: FC<Readonly<ContainerProps>> = ({
     <>
       {scrollable ? (
         <ScrollArea className="h-[calc(100vh-72px)] ">
-          <div className="flex flex-1 p-4 md:px-6">{children}</div>
+          <div className="flex flex-1 p-4 md:px-6 w-full">{children}</div>
         </ScrollArea>
       ) : (
-        <div className="flex flex-1 p-4 md:px-6">{children}</div>
+        <div className="flex flex-1 p-4 md:px-6 w-full">{children}</div>
       )}
     </>
   );
